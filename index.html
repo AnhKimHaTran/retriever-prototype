@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Retriever</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Archivo+Black&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section class="band">
+<div class="wrap band-in">
+  <p class="note">Prototype with sample files from a fictional consulting firm (Halden &amp; Ruiz). Try one of the example searches, switch who you're viewing as, or click a result.</p>
+
+  <header class="top">
+    <div class="brand">
+      <span class="logo" aria-hidden="true"><svg viewBox="0 0 64 64"><rect class="lg-tile" width="64" height="64"/><rect class="lg-k" x="13" y="9" width="9" height="45"/><path class="lg-handle2" d="M39 33 L50.5 49.5"/><circle class="lg-lens2" cx="32" cy="24.5" r="12"/><path class="lg-shine2" d="M26.6 23.4 a5.6 5.6 0 0 1 4.4 -4.5"/></svg></span>
+      <div class="brand-text"><div class="name-row"><h1 id="brandName">Retriever</h1><span class="pill">Prototype</span></div><span class="tagline">Fetches the slide you remember, wherever it's stored.</span></div>
+    </div>
+    <label class="viewas" for="viewas">Viewing as
+      <select id="viewas">
+        <option value="staff">Priya S. (Staff)</option>
+        <option value="principal">R. Halden (Principal)</option>
+      </select>
+    </label>
+  </header>
+
+  <form class="search" id="searchForm" role="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle class="mark-s" cx="10.5" cy="10.5" r="6.5"/><path class="mark-s" d="M15.5 15.5 21 21"/></svg>
+    <label for="q" class="lbl" hidden>Describe what you're looking for</label>
+    <input id="q" type="search" autocomplete="off" placeholder="Describe it: a picture, a chart, a phrase, a client…" value="slide with huts on the beach">
+    <button class="btn" type="submit">Search</button>
+  </form>
+
+  <div class="examples" id="examples">
+    <span class="lbl">Try:</span>
+  </div>
+
+  <div class="filters">
+    <div class="sources" id="sources" aria-label="Sources to search">
+      <span class="lbl">Searching:</span>
+    </div>
+    <label class="toggle" for="versions"><input type="checkbox" id="versions" checked> Include earlier versions</label>
+  </div>
+
+</div>
+</section>
+
+<div class="wrap">
+  <p class="status" id="status" aria-live="polite"></p>
+  <div class="locked" id="locked" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect class="lock-s" x="5" y="11" width="14" height="10"/><path class="lock-s" d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+    <span id="lockedText"></span>
+  </div>
+  <div class="grid" id="results"></div>
+
+  <footer class="about">
+    <p><strong>About this prototype.</strong> Search here matches against written descriptions of each sample slide. The real product would use AI to read the text and pictures inside a firm's files, including earlier versions, and would only search folders the person already has access to.</p>
+    <p>Working name: Retriever. UT Dallas, Team 14.</p>
+  </footer>
+</div>
+
+<div class="sheet-bg" id="sheetBg" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="sheet-head">
+      <h2 id="sheetTitle"></h2>
+      <button class="x" id="closeSheet" type="button" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-body" id="sheetBody"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="script.js"></script>
+</body>
+</html>
